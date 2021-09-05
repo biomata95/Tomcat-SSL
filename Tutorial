@@ -1,21 +1,16 @@
-CRIAÇÃO DE CERTIFICADO PARA TOMCAT NO ECLIPSE
+CREATION OF CERTIFICATE FOR TOMCAT IN ECLIPSE
 
+Create certificate:
 
-Criar certificado:
+FULLPATH\jdk\bin\keytool -genkeypair -alias Mycert -keyalg RSA -keystore "FULLPATH\CERTIFICATE.cert"
 
-FULLPATH\jdk\bin\keytool -genkeypair -alias Mycert -keyalg RSA -keystore "FULLPATH\CERTIFICADO.cert"
-
-
-Adicionar este trecho no arquivo server.xml do Projeto Server do Eclipse:
+Add this snippet to the server.xml file of the Eclipse Server Project:
 
 <Connector port="8443" protocol="org.apache.coyote.http11.Http11Protocol"
                maxThreads="150" SSLEnabled="true" scheme="https" secure="true"
-               clientAuth="false" sslProtocol="TLS" keystoreFile="FULLPATH\CERTIFICADO.cert" keystorePass="SENHA"/>
+               clientAuth="false" sslProtocol="TLS" keystoreFile="FULLPATH\CERTIFICADO.cert" keystorePass="PASSWORD"/>
 
-
-
-
-Adicionar este trecho no Arquivo web.xml do projeto:
+Add this snippet to the project's web.xml file:
 
 <security-constraint>
 		<web-resource-collection>
